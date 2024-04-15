@@ -34,8 +34,4 @@ public final class Reporter {
         for (Object obj : list)
             System.out.println(obj);
     }
-    public static void print(List<String> lines) {
-        for (String line : lines)
-            System.out.println(line);
-    }
 }
