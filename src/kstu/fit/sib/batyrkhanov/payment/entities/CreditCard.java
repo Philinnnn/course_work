@@ -5,7 +5,6 @@ import kstu.fit.sib.batyrkhanov.payment.utilities.Generator;
 
 import java.io.Serial;
 
-@SuppressWarnings("unused")
 public class CreditCard extends Card {
 
     @Serial

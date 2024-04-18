@@ -15,17 +15,17 @@ public class Account implements Serializable {
 
     private double balance;
     private boolean isBlocked;
-    private int UID;
+    private int accountId;
     private LinkedList <Card> cards = new LinkedList<>();
     private Client client;
 
     public Account() {
     }
-    public Account(Client client, int UID, double balance) {
+    public Account(Client client, int accountId, double balance) {
         this.client = client;
         this.balance = balance;
         this.isBlocked = false;
-        this.UID = UID;
+        this.accountId = accountId;
     }
 
 ////////////////////////////////
@@ -41,15 +41,15 @@ public class Account implements Serializable {
     public double getBalance() {
         return balance;
     }
-    public int getUID() {
-        return UID;
+    public int getAccountId() {
+        return accountId;
     }
     public boolean isBlocked() {
         return isBlocked;
     }
-    public static Account getAccountByUID(int UID, LinkedList <Account> allAccounts) {
+    public static Account getAccountByID(int ID, LinkedList <Account> allAccounts) {
         for (Account account : allAccounts) {
-            if (account.getUID() == UID) {
+            if (account.getAccountId() == ID) {
                 return account;
             }
         }
@@ -89,20 +89,20 @@ public class Account implements Serializable {
         Account account = (Account) obj;
         return Double.compare(account.getBalance(), getBalance()) == 0 &&
             isBlocked() == account.isBlocked() &&
-            getUID() == account.getUID() &&
+            getAccountId() == account.getAccountId() &&
             Objects.equals(getCards(), account.getCards()) &&
             Objects.equals(getClient(), account.getClient());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(balance, isBlocked, UID, cards, client);
+        return Objects.hash(balance, isBlocked, accountId, cards, client);
     }
 
     @Override
     public String toString() {
         String str = String.format("""
-            Счет {баланс=%.2f, заблокирована=%s, UID=%d}%n""", balance, Reporter.boolToString(isBlocked), UID);
+            Счет {баланс=%.2f, заблокирована=%s, UID=%d}%n""", balance, Reporter.boolToString(isBlocked), accountId);
         for (Card card : cards)
             str += "\t\t" + card.toString() + "\n";
         return str;

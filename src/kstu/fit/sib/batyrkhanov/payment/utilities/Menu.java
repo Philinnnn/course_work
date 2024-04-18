@@ -198,10 +198,10 @@ public class Menu {
                     break;
                 case 6: // Block
                     try {
-                        System.out.println("Введите UID счёта: ");
-                        int blockUID = scanner.nextInt();
-                        admin.blockAccount(Objects.requireNonNull(Account.getAccountByUID(blockUID, allAccounts)));
-                        Reporter.print(Account.getAccountByUID(blockUID, allAccounts));
+                        System.out.println("Введите ID счёта: ");
+                        int blockID = scanner.nextInt();
+                        admin.blockAccount(Objects.requireNonNull(Account.getAccountByID(blockID, allAccounts)));
+                        Reporter.print(Account.getAccountByID(blockID, allAccounts));
                     }
                     catch (Exception e) {
                         System.out.println("Счет не найден");
@@ -209,10 +209,10 @@ public class Menu {
                     break;
                 case 7: // Unblock
                     try {
-                    System.out.println("Введите UID счёта: ");
-                    int unblockUID = scanner.nextInt();
-                    admin.unblockAccount(Objects.requireNonNull(Account.getAccountByUID(unblockUID, allAccounts)));
-                    Reporter.print(Account.getAccountByUID(unblockUID, allAccounts));
+                    System.out.println("Введите ID счёта: ");
+                    int unblockID = scanner.nextInt();
+                    admin.unblockAccount(Objects.requireNonNull(Account.getAccountByID(unblockID, allAccounts)));
+                    Reporter.print(Account.getAccountByID(unblockID, allAccounts));
                     }
                     catch (Exception e) {
                         System.out.println("Счет не найден");

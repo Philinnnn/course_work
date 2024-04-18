@@ -14,14 +14,14 @@ public class Client implements Serializable, AccountLock {
     private static final long serialVersionUID = 793217832L;
 
     private String name;
-    private int CID; // Уникальный номер клиента Client ID
+    private int clientID; // Уникальный номер клиента Client ID
     private LinkedList <Account> accounts = new LinkedList<>();
 
     public Client(){
     }
-    public Client(String name, int CID) {
+    public Client(String name, int clientID) {
         this.name = name;
-        this.CID = CID;
+        this.clientID = clientID;
     }
 
 ////////////////////////////////
@@ -31,15 +31,15 @@ public class Client implements Serializable, AccountLock {
     public String getName(){
         return name;
     }
-    public int getCID() {
-        return CID;
+    public int getClientID() {
+        return clientID;
     }
     public LinkedList <Account> getAccounts() {
         return this.accounts;
     }
-    public static Client getClientByCID(int CID, LinkedList <Client> clients) {
+    public static Client getClientByID(int ID, LinkedList <Client> clients) {
         for (Client client : clients) {
-            if (client.getCID() == CID) {
+            if (client.getClientID() == ID) {
                 return client;
             }
         }
@@ -59,14 +59,14 @@ public class Client implements Serializable, AccountLock {
             return false;
         }
         Client client = (Client) obj;
-        return getCID() == client.getCID() &&
+        return getClientID() == client.getClientID() &&
             Objects.equals(getName(), client.getName()) &&
             Objects.equals(getAccounts(), client.getAccounts());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, CID, accounts);
+        return Objects.hash(name, clientID, accounts);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Client implements Serializable, AccountLock {
 
     @Override
     public String toString() {
-        String str = "Клиент {Имя='" + name + "', CID=" + CID + "}\n";
+        String str = "Клиент {Имя='" + name + "', ID=" + clientID + "}\n";
         for (Account acc : accounts)
             str += "\t" + acc.toString();
         return str;
