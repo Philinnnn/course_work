@@ -1,7 +1,6 @@
 package kstu.fit.sib.batyrkhanov.payment.utilities;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

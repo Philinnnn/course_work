@@ -1,11 +1,14 @@
 package kstu.fit.sib.batyrkhanov.payment.entities;
 
+import kstu.fit.sib.batyrkhanov.payment.exceptions.BlockAccountException;
+import kstu.fit.sib.batyrkhanov.payment.interfaces.AccountLock;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Client implements Serializable {
+public class Client implements Serializable, AccountLock {
 
     @Serial
     private static final long serialVersionUID = 793217832L;
@@ -60,11 +63,41 @@ public class Client implements Serializable {
             Objects.equals(getName(), client.getName()) &&
             Objects.equals(getAccounts(), client.getAccounts());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, CID, accounts);
+    }
+
+    @Override
+    public void blockAccount(Account acc) {
+        if (this.accounts.contains(acc)) {
+            try {
+                acc.block();
+            } catch (BlockAccountException e) {
+                System.err.println("Предупреждение: " + e.getMessage());
+            }
+        }
+        else System.out.println("Данный счет принадлежит другому клиенту");
+    }
+
+    @Override
+    public void unblockAccount(Account acc) {
+        if (this.accounts.contains(acc)) {
+            try {
+                acc.unblock();
+            } catch (BlockAccountException e) {
+                System.err.println("Предупреждение: " + e.getMessage());
+            }
+        }
+        else System.out.println("Данный счет принадлежит другому клиенту");
+    }
+
     @Override
     public String toString() {
         String str = "Клиент {Имя='" + name + "', CID=" + CID + "}\n";
         for (Account acc : accounts)
             str += "\t" + acc.toString();
         return str;
-    }      
+    }
 }

@@ -93,6 +93,12 @@ public class Account implements Serializable {
             Objects.equals(getCards(), account.getCards()) &&
             Objects.equals(getClient(), account.getClient());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balance, isBlocked, UID, cards, client);
+    }
+
     @Override
     public String toString() {
         String str = String.format("""
