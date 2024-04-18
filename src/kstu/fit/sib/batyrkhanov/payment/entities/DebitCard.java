@@ -26,8 +26,7 @@ public class DebitCard extends Card{
 
     @Override
     public boolean withdraw(double amount) {
-        double maxTransferAmount = getMaxTransferAmount();
-        if (getAccount().getBalance() >= amount && amount <= maxTransferAmount) {
+        if (getAccount().getBalance() >= amount) {
             getAccount().setBalance(getAccount().getBalance() - amount);
             return true;
         } else {

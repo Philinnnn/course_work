@@ -1,7 +1,6 @@
 package kstu.fit.sib.batyrkhanov.payment.utilities;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import kstu.fit.sib.batyrkhanov.payment.entities.Account;
 import kstu.fit.sib.batyrkhanov.payment.entities.Card;
