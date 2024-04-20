@@ -282,7 +282,7 @@ public class Menu {
         }
         scanner.close();
     }
-    static void clearConsole() {
+    private static void clearConsole() {
         for (int i = 0; i < 100; i++)
             System.out.println();
     }

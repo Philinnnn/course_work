@@ -83,14 +83,7 @@ public class Client implements Serializable, AccountLock {
 
     @Override
     public void unblockAccount(Account acc) {
-        if (this.accounts.contains(acc)) {
-            try {
-                acc.unblock();
-            } catch (BlockAccountException e) {
-                System.err.println("Предупреждение: " + e.getMessage());
-            }
-        }
-        else System.out.println("Данный счет принадлежит другому клиенту");
+        System.out.println("Невозможно разблокировать счет. Обратитесь в службу поддержки банка");
     }
 
     @Override
